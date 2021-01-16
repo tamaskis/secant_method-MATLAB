@@ -22,7 +22,7 @@ Calculates the root of a univariate function using the secant method.
 `root = secant_method(f,x0,TOL,imax)` returns the root of a function <img src="https://latex.codecogs.com/svg.latex?f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the root, `TOL` is the tolerance, and `imax` is the maximum number of iterations.
 
 
-## Examples
+## Example
 
 Consider the function
 
@@ -50,3 +50,5 @@ This yields the result
     root2 =
 
          1
+
+*NOTE: A more complex example is also provided in "Secant Method - MATLAB Implementation".*
