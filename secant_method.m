@@ -26,19 +26,8 @@
 % See https://github.com/tamaskis/secant_method-MATLAB for additional 
 % documentation and examples. Examples can also be found in EXAMPLE.m 
 % (included with download).
-
-
-
-%% Copyright (c) 2021 Tamas Kis
-
-% AUTHOR:
-% Tamas Kis
-
-% VERSION HISTORY:
-% v1.0.0: 15-Jan-2021, First version.
-% v1.0.1: 15-Jan-2021, Updated external documentation to include link to 
-%                      MATLAB File Exchange page (this .m file unchanged).
-% v1.0.2: 17-Jan-2021, Updated external documentation.
+%
+% Copyright (c) 2021 Tamas Kis
 
 
 

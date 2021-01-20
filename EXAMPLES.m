@@ -2,9 +2,6 @@
 
 % Examples for using the secant_method function.
 
-% AUTHOR: Tamas Kis
-% LAST MODIFIED: January 15, 2021
-
 
 
 %% SCRIPT SETUP
