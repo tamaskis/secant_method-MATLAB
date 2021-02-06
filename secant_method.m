@@ -50,9 +50,15 @@
 %                 intermediate root estimates; otherwise, a faster 
 %                 algorithm is used to only return the converged root
 % OUTPUT: root - root of f(x)
+%          --> if "output" is specified as 'all', then "root" will be a 
+%              vector, where the first element is the initial guess, the 
+%              last element is the converged root, and the other elements 
+%              are intermediate estimates of the root
+%          --> otherwise, "root" is a single number storing the converged
+%              root
 function root = secant_method(f,x0,TOL,imax,output)
     
-% sets default tolerance and maximum number of iterations if not
+    % sets default tolerance and maximum number of iterations if not
     % specified by user
     if (nargin < 3) || isempty(TOL)
         TOL = 1e-12;
