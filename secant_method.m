@@ -16,6 +16,11 @@
 %   root and imax is the maximum number of iterations. The default 
 %   tolerance is TOL = 1e-12.
 %
+%   root = secant_method(f,x0,TOL,imax) returns the root of a function
+%   f(x) specified by the function handle f, where x0 is an initial guess
+%   of the root, TOL is the tolerance, and imax is the maximum number of
+%   iterations.
+%
 %   root = secant_method(__,'all') returns a vector, where the first
 %   element of this vector is the initial guess, all intermediate elements
 %   are the intermediate estimates of the root, and the last element is the
