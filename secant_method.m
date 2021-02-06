@@ -81,13 +81,13 @@ function root = secant_method(f,x0,TOL,imax,output)
     % initializes the error so the loop will be entered
     err = 2*TOL;
     
-    % preallocates x
-    x = zeros(imax,1);
-    
     % implements algorithm for the secant method where all intermediate 
     % root estimates are also returned
     if return_all
         
+        % preallocates x
+        x = zeros(imax,1);
+    
         % inputs 1st and 2nd guesses for root into x vector
         x(1) = x0;
         x(2) = 1.01*x0;
@@ -126,7 +126,7 @@ function root = secant_method(f,x0,TOL,imax,output)
             % calculates error
             err = abs(x_new-x_int);
             
-            % stores root estimates for next iteration
+            % stores updated root estimates for next iteration
             x_old = x_int;
             x_int = x_new;
 
