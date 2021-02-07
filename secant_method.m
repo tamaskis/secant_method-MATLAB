@@ -2,24 +2,24 @@
 % secant method.
 %
 %   root = secant_method(f,x0) returns the root of a function f(x)
-%   specified by the function handle f, where x0 is an initial guess of the
-%   root. The default tolerance and maximum number of iterations are 
+%   specified by the function handle "f", where "x0" is an initial guess of
+%   the root. The default tolerance and maximum number of iterations are 
 %   TOL = 1e-12 and imax = 1e6, respectively.
 %
 %   root = secant_method(f,x0,TOL) returns the root of a function f(x)
-%   specified by the function handle f, where x0 is an initial guess of the
-%   root and TOL is the tolerance. The default maximum number of iterations
-%   is imax = 1e6.
+%   specified by the function handle "f", where "x0" is an initial guess of
+%   the root and "TOL" is the tolerance. The default maximum number of 
+%   iterations is imax = 1e6.
 %
 %   root = secant_method(f,x0,[],imax) returns the root of a function f(x)
-%   specified by the function handle f, where x0 is an initial guess of the
-%   root and imax is the maximum number of iterations. The default 
+%   specified by the function handle "f", where "x0" is an initial guess of
+%   the root and "imax" is the maximum number of iterations. The default 
 %   tolerance is TOL = 1e-12.
 %
 %   root = secant_method(f,x0,TOL,imax) returns the root of a function
-%   f(x) specified by the function handle f, where x0 is an initial guess
-%   of the root, TOL is the tolerance, and imax is the maximum number of
-%   iterations.
+%   f(x) specified by the function handle "f", where "x0" is an initial 
+%   guess of the root, "TOL" is the tolerance, and "imax" is the maximum 
+%   number of iterations.
 %
 %   root = secant_method(__,'all') returns a vector, where the first
 %   element of this vector is the initial guess, all intermediate elements
@@ -32,9 +32,9 @@
 % MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method
 % GitHub: https://github.com/tamaskis/secant_method-MATLAB
 %
-% See "Secant Method - MATLAB implementation" for additional documentation.
-% Examples can be found in EXAMPLES.m. Both of these files are included
-% with the download.
+% See "Secant Method - MATLAB implementation.pdf" for additional 
+% documentation and examples. Examples can also be found in EXAMPLES.m. 
+% Both of these files are included with the download.
 %
 % Copyright (c) 2021 Tamas Kis
 
@@ -94,7 +94,7 @@ function root = secant_method(f,x0,TOL,imax,output)
 
         % secant method
         i = 2;
-        while (i < imax) && (err > TOL)
+        while (err > TOL) && (i < imax)
 
             % updates estimate of root
             x(i+1) = (x(i-1)*f(x(i))-x(i)*f(x(i-1)))/(f(x(i))-f(x(i-1)));
@@ -118,7 +118,7 @@ function root = secant_method(f,x0,TOL,imax,output)
 
         % secant method
         i = 2;
-        while (i < imax) && (err > TOL)
+        while (err > TOL) && (i < imax)
 
             % updates estimate of root
             x_new = (x_old*f(x_int)-x_int*f(x_old))/(f(x_int)-f(x_old));
