@@ -54,4 +54,4 @@ This yields the result
 
          1
 
-*NOTE: A more complex example is also provided in "Secant Method - MATLAB Implementation".*
+*NOTE: A more complex example is also provided in "Secant Method - MATLAB Implementation.pdf".*
