@@ -1,4 +1,5 @@
-# `secant_method` [![View Secant Method (secant_method) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method)
+# `secant_method`
+[![View Secant Method (secant_method) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method)
 
 Calculates the root of a univariate function using the secant method.
 
