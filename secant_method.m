@@ -32,11 +32,12 @@
 % MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method
 % GitHub: https://github.com/tamaskis/secant_method-MATLAB
 %
-% See "Secant Method - MATLAB implementation.pdf" for additional 
-% documentation and examples. Examples can also be found in EXAMPLES.m. 
-% Both of these files are included with the download.
+% See "DOCUMENTATION.pdf" for additional documentation and examples. 
+% Examples can also be found in EXAMPLES.m. Both of these files are 
+% included with the download.
 %
 % Copyright (c) 2021 Tamas Kis
+% Last Update: 2021-03-24
 
 
 
