@@ -1,3 +1,5 @@
+% TEST CHANGE
+%
 % secant_method  Calculates the root of a univariate function using the 
 % secant method.
 %
