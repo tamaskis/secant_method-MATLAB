@@ -1,62 +1,52 @@
+%==========================================================================
+%
 % secant_method  Calculates the root of a univariate function using the 
 % secant method.
 %
-%   root = secant_method(f,x0) returns the root of a function f(x)
-%   specified by the function handle "f", where "x0" is an initial guess of
-%   the root. The default tolerance and maximum number of iterations are 
-%   TOL = 1e-12 and imax = 1e6, respectively.
-%
-%   root = secant_method(f,x0,TOL) returns the root of a function f(x)
-%   specified by the function handle "f", where "x0" is an initial guess of
-%   the root and "TOL" is the tolerance. The default maximum number of 
-%   iterations is imax = 1e6.
-%
-%   root = secant_method(f,x0,[],imax) returns the root of a function f(x)
-%   specified by the function handle "f", where "x0" is an initial guess of
-%   the root and "imax" is the maximum number of iterations. The default 
-%   tolerance is TOL = 1e-12.
-%
-%   root = secant_method(f,x0,TOL,imax) returns the root of a function
-%   f(x) specified by the function handle "f", where "x0" is an initial 
-%   guess of the root, "TOL" is the tolerance, and "imax" is the maximum 
-%   number of iterations.
-%
-%   root = secant_method(__,'all') returns a vector, where the first
-%   element of this vector is the initial guess, all intermediate elements
-%   are the intermediate estimates of the root, and the last element is the
-%   converged root. This identifier 'all' may be appended to any of the
-%   syntaxes used above.
+%   root = secant_method(f,x0)
+%   root = secant_method(f,x0,TOL)
+%   root = secant_method(f,x0,[],imax)
+%   root = secant_method(f,x0,TOL,imax)
+%   root = secant_method(__,'all')
 %
 % See also fzero
+%
+% Copyright © 2021 Tamas Kis
+% Last Update: 2021-06-17
+%
+%--------------------------------------------------------------------------
 %
 % MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method
 % GitHub: https://github.com/tamaskis/secant_method-MATLAB
 %
-% See "DOCUMENTATION.pdf" for additional documentation and examples. 
-% Examples can also be found in EXAMPLES.m. Both of these files are 
-% included with the download.
+% See EXAMPLES.mlx for examples and "DOCUMENTATION.pdf" for additional 
+% documentation. Both of these files are included with the download.
 %
-% Copyright (c) 2021 Tamas Kis
-% Last Update: 2021-03-27
-
-
-
-%% FUNCTION
-
-% INPUT: f - function handle for f(x)
-%        x0 - initial guess for root
-%        TOL - (OPTIONAL) tolerance
-%        imax - (OPTIONAL) maximum number of iterations
-%        output - if specified as 'all', function will returns all 
-%                 intermediate root estimates; otherwise, a faster 
-%                 algorithm is used to only return the converged root
-% OUTPUT: root - root of f(x)
-%          --> if "output" is specified as 'all', then "root" will be a 
-%              vector, where the first element is the initial guess, the 
-%              last element is the converged root, and the other elements 
-%              are intermediate estimates of the root
-%          --> otherwise, "root" is a single number storing the converged
-%              root
+%--------------------------------------------------------------------------
+%
+% -------
+% INPUTS:
+% -------
+%   f       - (function_handle) f(x)
+%   x0      - (1×1) initial guess for root
+%  	TOL     - (OPTIONAL) (1×1) tolerance
+% 	imax	- (OPTIONAL) (1×1) maximum number of iterations
+%	output	- (OPTIONAL) (char) if specified as 'all', function will return
+%             all intermediate root estimates; otherwise, a faster 
+%             algorithm is used to only return the converged root
+%
+% --------
+% OUTPUTS:
+% --------
+%   root    - (1×1 or n×1) root of f(x)
+%           	--> if "output" is specified as 'all', then "root" will be
+%                   a vector, where the first element is the initial guess,
+%                   the last element is the converged root, and the other 
+%                   elements are intermediate estimates of the root
+%               --> otherwise, "root" is a single number storing the
+%                   converged root
+%
+%==========================================================================
 function root = secant_method(f,x0,TOL,imax,output)
     
     % sets default tolerance and maximum number of iterations if not
@@ -116,6 +106,9 @@ function root = secant_method(f,x0,TOL,imax,output)
         % sets root estimates for 1st iteration of the secant method
         x_old = x0;
         x_int = 1.01*x0;
+        
+        % initializes x_new so its scope isn't limited to the while loop
+        x_new = 0;
 
         % secant method
         i = 2;
@@ -127,7 +120,7 @@ function root = secant_method(f,x0,TOL,imax,output)
             % calculates error
             err = abs(x_new-x_int);
             
-            % stores updated root estimates for next iteration
+            % stores current and previous root estimates for next iteration
             x_old = x_int;
             x_int = x_new;
 
@@ -136,8 +129,8 @@ function root = secant_method(f,x0,TOL,imax,output)
 
         end
 
-        % returns root
-        root = x_old;
+        % returns converged root
+        root = x_new;
         
     end
       
