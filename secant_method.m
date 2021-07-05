@@ -9,7 +9,7 @@
 %   root = secant_method(f,x0,TOL,imax)
 %   root = secant_method(__,'all')
 %
-% See also fzero, bisection_method, newtons_method
+% See also fzero, bisection_method, newtons_method.
 %
 % Copyright © 2021 Tamas Kis
 % Contact: tamas.a.kis@outlook.com
