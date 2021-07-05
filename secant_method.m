@@ -13,7 +13,7 @@
 %
 % Copyright © 2021 Tamas Kis
 % Contact: tamas.a.kis@outlook.com
-% Last Update: 2021-07-04
+% Last Update: 2021-07-05
 %
 %--------------------------------------------------------------------------
 %
@@ -25,9 +25,9 @@
 %
 %--------------------------------------------------------------------------
 %
-% -------
-% INPUTS:
-% -------
+% ------
+% INPUT:
+% ------
 %   f       - (function_handle) f(x)
 %   x0      - (1×1) initial guess for root
 %   TOL     - (OPTIONAL) (1×1) tolerance
@@ -36,9 +36,9 @@
 %             all intermediate root estimates; otherwise, a faster 
 %             algorithm is used to only return the converged root
 %
-% --------
-% OUTPUTS:
-% --------
+% -------
+% OUTPUT:
+% -------
 %   root    - (1×1 or n×1) root of f(x)
 %           	--> if "output" is specified as 'all', then "root" will be
 %                   a vector, where the first element is the initial guess,
