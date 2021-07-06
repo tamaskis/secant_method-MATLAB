@@ -102,6 +102,8 @@ function root = secant_method(f,x0,TOL,imax,output)
         % returns converged root along with intermediate root estimates
         root = x(1:i);
     
+    % implements (faster) algorithm for the secant method where only the
+    % converged root estimate is returned
     else
         
         % sets root estimates for 1st iteration of the secant method
