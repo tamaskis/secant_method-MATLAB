@@ -13,7 +13,7 @@
 %
 % Copyright © 2021 Tamas Kis
 % Contact: tamas.a.kis@outlook.com
-% Last Update: 2021-07-05
+% Last Update: 2021-07-09
 %
 %--------------------------------------------------------------------------
 %
@@ -63,7 +63,7 @@ function root = secant_method(f,x0,TOL,imax,output)
     if nargin < 5
         return_all = false;
     else
-        if strcmp(output,'all')
+        if strcmpi(output,'all')
             return_all = true;
         else
             return_all = false;
