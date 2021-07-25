@@ -12,16 +12,12 @@
 % See also fzero, bisection_method, newtons_method.
 %
 % Copyright © 2021 Tamas Kis
+% Last Update: 2021-07-24
+% Website: tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
-% Last Update: 2021-07-09
 %
-%--------------------------------------------------------------------------
-%
-% MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85745-secant-method-secant_method
-% GitHub: https://github.com/tamaskis/secant_method-MATLAB
-%
-% See EXAMPLES.mlx for examples and "DOCUMENTATION.pdf" for additional 
-% documentation. Both of these files are included with the download.
+% REFERENCES:
+%   [1] https://tamaskis.github.io/documentation/Secant%20Method.pdf
 %
 %--------------------------------------------------------------------------
 %

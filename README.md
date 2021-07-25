@@ -28,4 +28,4 @@ Calculates the root of a univariate function using the secant method.
 ## Examples and Additional Documentation
 
    -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
-   -  See "DOCUMENTATION.pdf" (included with download, also available at https://github.com/tamaskis/secant_method-MATLAB/blob/main/DOCUMENTATION.pdf) for additional documentation.
+   -  See "Secant Method.pdf" (included with download, also available at https://tamaskis.github.io/documentation/Secant%20Method.pdf) for additional documentation.
