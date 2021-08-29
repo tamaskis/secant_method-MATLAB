@@ -4,20 +4,22 @@
 % secant method.
 %
 %   root = secant_method(f,x0)
-%   root = secant_method(f,x0,TOL)
-%   root = secant_method(f,x0,[],imax)
-%   root = secant_method(f,x0,TOL,imax)
-%   root = secant_method(__,'all')
+%   root = secant_method(f,x0,opts)
 %
 % See also fzero, bisection_method, newtons_method.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-07-24
-% Website: tamaskis.github.io
+% Last Update: 2021-08-28
+% Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/documentation/Secant_Method.pdf
+%
 % REFERENCES:
-%   [1] https://tamaskis.github.io/documentation/Secant%20Method.pdf
+%   [1] Burden and Faires, "Numerical Analysis", 9th Ed. (pp. 67-78)
+%   [2] https://en.wikipedia.org/wiki/Newton%27s_method
+%   [3] https://en.wikipedia.org/wiki/Secant_method
 %
 %--------------------------------------------------------------------------
 %
@@ -25,52 +27,68 @@
 % INPUT:
 % ------
 %   f       - (function_handle) f(x)
-%   x0      - (1×1) initial guess for root
-%   TOL     - (OPTIONAL) (1×1) tolerance
-%   imax    - (OPTIONAL) (1×1) maximum number of iterations
-%   output  - (OPTIONAL) (char) if specified as 'all', function will return
-%             all intermediate root estimates; otherwise, a faster 
-%             algorithm is used to only return the converged root
+%   x0      - (1×1 double) initial guess for root
+%   opts    - (OPTIONAL) (struct) solver options structure
+%       • imax          - (1×1 double) maximimum number of iterations
+%       • return_all    - (logical) all intermediate root estimates are
+%                         returned if set to "true"; otherwise, a faster 
+%                         algorithm is used to return only the converged 
+%                         root
+%       • TOL           - (1×1 double) tolerance
+%       • warnings      - (logical) true if any warnings should be
+%                         displayed, false if not
 %
 % -------
 % OUTPUT:
 % -------
-%   root    - (1×1 or n×1) root of f(x)
-%           	--> if "output" is specified as 'all', then "root" will be
-%                   a vector, where the first element is the initial guess,
-%                   the last element is the converged root, and the other 
-%                   elements are intermediate estimates of the root
-%               --> otherwise, "root" is a single number storing the
-%                   converged root
+%   root    - (1×1 or n×1 double) root of f(x)
+%           	--> If "return_all" is specified as "true", then "root" 
+%                   will be a vector, where the first element is the 
+%                   initial guess, the last element is the converged root, 
+%                   and the other elements are intermediate estimates of 
+%                   the root.
+%               --> Otherwise, "root" is a single number storing the
+%                   converged root.
 %
 %==========================================================================
-function root = secant_method(f,x0,TOL,imax,output)
+function root = secant_method(f,x0,opts)
     
-    % sets default tolerance and maximum number of iterations if not
-    % specified by user
-    if (nargin < 3) || isempty(TOL)
-        TOL = 1e-12;
-    end
-    if (nargin < 4) || isempty(imax)
+    % ----------------------------------
+    % Sets (or defaults) solver options.
+    % ----------------------------------
+    
+    % sets maximum number of iterations (defaults to 1e6)
+    if (nargin < 3) || isempty(opts) || ~isfield(opts,'imax')
         imax = 1e6;
+    else
+        imax = opts.imax;
     end
     
-    % decides which algorithm to use
-    if nargin < 5
+    % determines return value (defaults to only return converged root)
+    if (nargin < 3) || isempty(opts) || ~isfield(opts,'return_all')
         return_all = false;
     else
-        if strcmpi(output,'all')
-            return_all = true;
-        else
-            return_all = false;
-        end
+        return_all = opts.return_all;
     end
     
-    % initializes the error so the loop will be entered
-    err = 2*TOL;
+    % sets tolerance (defaults to 1e-12)
+    if (nargin < 3) || isempty(opts) || ~isfield(opts,'TOL')
+        TOL = 1e-12;
+    else
+        TOL = opts.TOL;
+    end
     
-    % implements algorithm for the secant method where all intermediate 
-    % root estimates are also returned
+    % determines if warnings should be displayed (defaults to display)
+    if (nargin < 3) || isempty(opts) || ~isfield(opts,'warnings')
+        warnings = true;
+    else
+        warnings = opts.warnings;
+    end
+    
+    % -------------------------------------------------
+    % "Return all" implementation of the secant method.
+    % -------------------------------------------------
+    
     if return_all
         
         % preallocates x
@@ -79,6 +97,9 @@ function root = secant_method(f,x0,TOL,imax,output)
         % inputs 1st and 2nd guesses for root into x vector
         x(1) = x0;
         x(2) = 1.01*x0;
+        
+        % initializes the error so the loop will be entered
+        err = 2*TOL;
 
         % secant method
         i = 2;
@@ -94,12 +115,20 @@ function root = secant_method(f,x0,TOL,imax,output)
             i = i+1;
 
         end
+        
+        % displays warning if maximum number of iterations reached
+        if (i == imax) && warnings
+            warning(strcat('The method failed after n=',num2str(imax),...
+                ' iterations.'));
+        end
 
         % returns converged root along with intermediate root estimates
         root = x(1:i);
     
-    % implements (faster) algorithm for the secant method where only the
-    % converged root estimate is returned
+    % -------------------------------------------
+    % "Fast" implementation of the secant method.
+    % -------------------------------------------
+    
     else
         
         % sets root estimates for 1st iteration of the secant method
@@ -108,6 +137,9 @@ function root = secant_method(f,x0,TOL,imax,output)
         
         % initializes x_new so its scope isn't limited to the while loop
         x_new = 0;
+        
+        % initializes the error so the loop will be entered
+        err = 2*TOL;
 
         % secant method
         i = 2;
@@ -126,6 +158,12 @@ function root = secant_method(f,x0,TOL,imax,output)
             % increments loop index
             i = i+1;
 
+        end
+        
+        % displays warning if maximum number of iterations reached
+        if (i == imax) && warnings
+            warning(strcat('The method failed after n=',num2str(imax),...
+                ' iterations.'));
         end
 
         % returns converged root
