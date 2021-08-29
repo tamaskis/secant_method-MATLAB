@@ -22,5 +22,5 @@ Calculates the root of a univariate function using the secant method.
 
 ## Examples and Additional Documentation
 
-   -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
-   -  See ["Secant_Method.pdf"](https://tamaskis.github.io/documentation/Secant_Method.pdf) (also included with download) for the technical documentation.
+   - See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples. 
+   - See ["Secant_Method.pdf"](https://tamaskis.github.io/documentation/Secant_Method.pdf) (also included with download) for the technical documentation.
