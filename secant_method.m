@@ -9,7 +9,7 @@
 % See also fzero, bisection_method, newtons_method.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-28
+% Last Update: 2021-11-22
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -78,7 +78,7 @@ function root = secant_method(f,x0,opts)
         TOL = opts.TOL;
     end
     
-    % determines if warnings should be displayed (defaults to display)
+    % determines if warnings should be displayed (defaults to true)
     if (nargin < 3) || isempty(opts) || ~isfield(opts,'warnings')
         warnings = true;
     else
@@ -118,7 +118,7 @@ function root = secant_method(f,x0,opts)
         
         % displays warning if maximum number of iterations reached
         if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
+            warning(strcat('The method failed after ',num2str(imax),...
                 ' iterations.'));
         end
 
@@ -162,7 +162,7 @@ function root = secant_method(f,x0,opts)
         
         % displays warning if maximum number of iterations reached
         if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
+            warning(strcat('The method failed after ',num2str(imax),...
                 ' iterations.'));
         end
 
