@@ -15,7 +15,7 @@ Calculates the root of a univariate, scalar-valued function using the secant met
 
 `root = secant_method(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure that has the following fields:
    - `imax` &rightarrow; maximum number of iterations (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{6}" title="" />)
-   - `return_all` &rightarrow; all intermediate root estimates are returned if set to `true`; otherwise, only the converged root is returned
+   - `return_all` &rightarrow; all intermediate root estimates are returned if set to `true`; otherwise, only the converged root is returned (defaults to `false`)
    - `TOL` &rightarrow; tolerance (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-12}" title="" />)
    - `warnings` &rightarrow; `true` if any warnings should be displayed, `false` if not (defaults to `true`)
 
