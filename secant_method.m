@@ -37,7 +37,7 @@
 %                      algorithm is used to return only the converged root
 %       • TOL        - (1×1 double) tolerance (defaults to 1e-12)
 %       • warnings   - (1×1 logical) true if any warnings should be 
-%                      displayed, false if not
+%                      displayed, false if not (defaults to true)
 %
 % -------
 % OUTPUT:
