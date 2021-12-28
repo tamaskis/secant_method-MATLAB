@@ -117,12 +117,6 @@ function root = secant_method(f,x0,opts)
             i = i+1;
 
         end
-        
-        % displays warning if maximum number of iterations reached
-        if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
-                ' iterations.'));
-        end
 
         % returns converged root along with intermediate root estimates
         root = x(1:i);
@@ -133,9 +127,9 @@ function root = secant_method(f,x0,opts)
     
     else
         
-        % sets root estimates for 1st iteration of the secant method
+        % sets 1st and 2nd guesses for root
         x_old = x0;
-        x_int = 1.01*x0;
+        x_int = x0+0.001;
         
         % initializes x_new so its scope isn't limited to the while loop
         x_new = 0;
@@ -161,16 +155,19 @@ function root = secant_method(f,x0,opts)
             i = i+1;
 
         end
-        
-        % displays warning if maximum number of iterations reached
-        if (i == imax) && warnings
-            warning(strcat('The method failed after n=',num2str(imax),...
-                ' iterations.'));
-        end
 
         % returns converged root
         root = x_new;
         
+    end
+
+    % ---------------------------------------------------------
+    % Displays warning if maximum number of iterations reached.
+    % ---------------------------------------------------------
+
+    if (i == imax) && warnings
+        warning(strcat('The method failed after i=',num2str(imax),...
+            ' iterations.'));
     end
       
 end
