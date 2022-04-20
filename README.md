@@ -13,9 +13,9 @@ Secant method for finding the root of a univariate, scalar-valued function.
 
 ## Description
 
-`root = secant_method(f,x0)` returns the root of a function <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the root.
+`x = secant_method(f,x0)` returns the root of a function <img src="https://latex.codecogs.com/svg.latex?\inline&space;f(x)" title="f(x)" /> specified by the function handle `f`, where `x0` is an initial guess of the root.
 
-`root = secant_method(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure with the following fields:
+`x = secant_method(f,x0,opts)` does the same as the syntax above, but allows for the specification of optional solver parameters. `opts` is a structure with the following fields:
    - `k_max` &rightarrow; maximum number of iterations (defaults to 200)
    - `return_all` &rightarrow; returns estimates at all iteration if set to `true` (defaults to `false`)
    - `TOL` &rightarrow; tolerance (defaults to <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-10}" title="" />)
